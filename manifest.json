@@ -1,0 +1,16 @@
+{
+  "short_name": "DOG",
+  "name": "DOG",
+  "icons": [
+    {
+      "src": "/dog_logo_square.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#272727",
+  "theme_color": "#d9b99b",
+  "display": "standalone"
+}

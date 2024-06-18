@@ -1,6 +1,37 @@
+<?php
+$queryValue = isset($_GET['meme']) ? $_GET['meme'] : null;
+
+$numberOfImages = 151;
+
+$thumbnailUrl = "https://dogonsol.online/img/thumbnail.jpg";
+
+
+
+if ($queryValue !== null && (!is_numeric($queryValue) || intval($queryValue) > $numberOfImages || intval($queryValue) < 0)){
+    $queryValue = mt_rand(1, $numberOfImages);
+    $thumbnailUrl = "https://dogonsol.online/thumbnail-jpg/" . intval($queryValue) . ".jpg";
+    $newUrl = "?meme=" . $queryValue;
+    header("Location: $newUrl", true, 302);
+    exit;
+}
+
+
+if ($queryValue !== null  ){
+    $thumbnailUrl = "https://dogonsol.online/thumbnail-jpg/" . intval($queryValue) . ".jpg";
+}
+$currentUrl = $_SERVER['REQUEST_URI'];
+if (strpos($currentUrl, '?') === false) {
+    $thumbnailUrl = "https://dogonsol.online/img/thumbnail.jpg";
+}
+
+?>
+
 <!doctype html>
 <html lang=en>
 <head>
+<meta name="twitter:image" id="twitter-image-thumbnail" content="<?php echo $thumbnailUrl; ?>">
+<meta property="og:image" id="og-image-thumbnail" content="<?php echo $thumbnailUrl; ?>">
+<meta name="image" id="image-thumbnail" content="<?php echo $thumbnailUrl; ?>">
 <meta charset=UTF-8>
 <link rel=canonical id="canonical" href=https://dogonsol.online/ >
 <meta property=og:url id="og-canonical" content=https://dogonsol.online/ >
